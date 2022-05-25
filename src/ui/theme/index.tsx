@@ -6,6 +6,7 @@ import {
   BoxProps,
   useTheme as useRTheme,
 } from '@shopify/restyle';
+import {StatusBar} from 'react-native';
 
 type BaseThemeType = typeof BaseTheme & {
   textVariants: {[key: string]: TextProps<typeof BaseTheme>};
@@ -126,7 +127,15 @@ export const theme = createTheme({
 export type Theme = typeof theme;
 
 export const ThemeProvider = ({children}: {children: React.ReactNode}) => (
-  <ReThemeProvider theme={theme}>{children}</ReThemeProvider>
+  <ReThemeProvider theme={theme}>
+    <StatusBar
+      animated
+      backgroundColor={
+        theme.navigation.dark ? theme.colors.white : theme.colors.black
+      }
+    />
+    {children}
+  </ReThemeProvider>
 );
 
 export const useTheme = () => useRTheme<Theme>();

@@ -4,14 +4,13 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import {useAuth} from 'core';
 import {NavigationContainer} from './NavigationContainer';
-import {TabNavigator} from './TabNavigator';
 import {AuthNavigator} from './AuthNavigator';
+import {SectionNavigator} from './app-navigator';
 
 const Stack = createStackNavigator();
 
 export const Root = () => {
   const {status} = useAuth();
-  console.log('test');
 
   useEffect(() => {
     if (status !== 'idle') {
@@ -27,7 +26,7 @@ export const Root = () => {
         animationTypeForReplace: status === 'signIn' ? 'push' : 'pop',
       }}>
       {status === 'signIn' ? (
-        <Stack.Screen name="App" component={TabNavigator} />
+        <Stack.Screen name="App" component={SectionNavigator} />
       ) : (
         <Stack.Screen name="Auth" component={AuthNavigator} />
       )}

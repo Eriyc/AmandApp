@@ -1,3 +1,4 @@
-export * from './Home';
-export * from './Login';
+export * from './auth';
+export * from './section-picker';
 export * from './Style';
+export * from './settings';

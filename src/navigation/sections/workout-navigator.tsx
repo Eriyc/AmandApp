@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Home, Style} from 'screens';
 import {Home as HomeIcon, Settings} from 'ui';
 import {SvgProps} from 'react-native-svg';
+import {WorkoutHome} from 'screens/workout';
 const Tab = createBottomTabNavigator();
 
 const getRouteIcon = (
@@ -21,7 +21,7 @@ const getRouteIcon = (
   return Icon;
 };
 
-export const TabNavigator = () => {
+export const WorkoutNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
@@ -30,8 +30,7 @@ export const TabNavigator = () => {
           return <Icon color={color} />;
         },
       })}>
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Style" component={Style} />
+      <Tab.Screen name="Home" component={WorkoutHome} />
     </Tab.Navigator>
   );
 };
